@@ -7,7 +7,7 @@
 import os       # Manipulation de fichiers/Dossiers
 import shutil   # Pour déplacer un fichier...
 
-scriptFilePath = os.path.abspath(__file__)      # Le chemin vers index.py
+scriptFilePath = os.path.abspath(__file__)
 folderPath = os.path.dirname(scriptFilePath)    # chemin du dossier contenant index.py
 filepath = ""    
                                # variable pour stocker le chemin d'un fichier...
@@ -17,7 +17,7 @@ listeFichiers = os.listdir(folderPath)
 # Fonction pour creer le dossier si il n'existe pas encore
 def createFolder(folderName):
     os.makedirs(folderName,exist_ok=True)
-    return os.path.join(os.getcwd(),folderName) #retourner le chemin du dossier
+    return os.path.join(os.getcwd(),folderName) #retourner le chemin du dossier 
 
 # couper fonction pour couper fichier dans le dossier correspondant
 def cutFile(folderPath,filePath):
@@ -30,11 +30,14 @@ for i in range(len(listeFichiers)):
     splited = os.path.splitext(filepath)
     extension = splited[1]
 
+    extension = extension.lower()
     # déplacer chaque fichiers
     # alternative à switch case:
     match extension:
         case ".png":
             cutFile(createFolder("Images"),filepath)
+        case ".txt":
+            cutFile(createFolder("Documents_Texte"),filepath)
         case ".jpg": 
             cutFile(createFolder("Images"),filepath)
         case ".mp4": 
@@ -44,18 +47,6 @@ for i in range(len(listeFichiers)):
         case ".pdf": 
             cutFile(createFolder("PDF"),filepath)
         case ".docx": 
-            cutFile(createFolder("Docx"),filepath)
-        case ".py":
-            print("Hello py !")
-        case ".PNG":
-            cutFile(createFolder("Images"),filepath)
-        case ".JPG": 
-            cutFile(createFolder("Images"),filepath)
-        case ".MP4": 
-            cutFile(createFolder("Videos"),filepath)
-        case ".PDF": 
-            cutFile(createFolder("PDF"),filepath)
-        case ".DOCX": 
             cutFile(createFolder("Docx"),filepath)
         case ".py":
             print("Hello py !")
