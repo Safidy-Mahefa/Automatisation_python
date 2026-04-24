@@ -57,7 +57,7 @@ pyautogui.mouseDown()
 center_x, center_y = pyautogui.position()
 
 scale = 150 #La grandeur
-for i in range(0,720,2):
+for i in range(0,720,3):
     angle = math.radians(i)
     r = scale * math.sin(10*angle) # 5 est le nombre de petales #Spirale: r = scale * angle/10
     x =center_x + r * math.cos(angle)
